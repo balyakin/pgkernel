@@ -3,7 +3,7 @@ package output
 import (
 	"encoding/json"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 // FILE:internal/output/json.go

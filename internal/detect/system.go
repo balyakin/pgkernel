@@ -9,7 +9,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 // FILE:internal/detect/system.go

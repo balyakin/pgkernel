@@ -3,7 +3,7 @@ package policy
 import (
 	"strings"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 // FILE:internal/policy/filter.go

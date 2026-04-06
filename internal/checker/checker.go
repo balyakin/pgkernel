@@ -138,7 +138,7 @@ func runtimeFailureResult(meta Meta, details string) CheckResult {
 			RequiresRoot:   false,
 			RequiresReboot: false,
 		},
-		Reference: "https://github.com/ebalyakin/pgkernel/issues",
+		Reference: "https://github.com/balyakin/pgkernel/issues",
 	}
 }
 

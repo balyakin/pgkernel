@@ -3,7 +3,7 @@ package main
 import (
 	"testing"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 func TestDedupeRegressions(t *testing.T) {

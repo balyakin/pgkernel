@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 // FILE:internal/output/share.go

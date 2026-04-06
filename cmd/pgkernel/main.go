@@ -6,11 +6,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
-	"github.com/ebalyakin/pgkernel/internal/checks"
-	"github.com/ebalyakin/pgkernel/internal/detect"
-	"github.com/ebalyakin/pgkernel/internal/output"
-	"github.com/ebalyakin/pgkernel/internal/policy"
+	"github.com/balyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checks"
+	"github.com/balyakin/pgkernel/internal/detect"
+	"github.com/balyakin/pgkernel/internal/output"
+	"github.com/balyakin/pgkernel/internal/policy"
 	"github.com/spf13/cobra"
 )
 

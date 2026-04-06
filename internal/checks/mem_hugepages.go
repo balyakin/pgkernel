@@ -5,7 +5,7 @@ import (
 	"math"
 	"strings"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 // FILE:internal/checks/mem_hugepages.go

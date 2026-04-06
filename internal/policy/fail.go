@@ -1,6 +1,6 @@
 package policy
 
-import "github.com/ebalyakin/pgkernel/internal/checker"
+import "github.com/balyakin/pgkernel/internal/checker"
 
 // FILE:internal/policy/fail.go
 // VERSION:1.0.2

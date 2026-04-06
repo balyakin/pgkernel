@@ -3,7 +3,7 @@ package detect
 import (
 	"runtime"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 // FILE:internal/detect/collect.go

@@ -1,6 +1,6 @@
 package checks
 
-import "github.com/ebalyakin/pgkernel/internal/checker"
+import "github.com/balyakin/pgkernel/internal/checker"
 
 func All() []checker.Check {
 	all := make([]checker.Check, 0, 13)

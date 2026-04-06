@@ -3,8 +3,8 @@ package tests
 import (
 	"testing"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
-	"github.com/ebalyakin/pgkernel/internal/policy"
+	"github.com/balyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/policy"
 )
 
 func TestDetectRegressions(t *testing.T) {

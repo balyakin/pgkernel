@@ -5,7 +5,7 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 // FILE:internal/detect/kernel.go

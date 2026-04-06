@@ -1,4 +1,4 @@
-module github.com/ebalyakin/pgkernel
+module github.com/balyakin/pgkernel
 
 go 1.22
 

@@ -6,7 +6,7 @@
 
 [![Go Version](https://img.shields.io/badge/go-1.22%2B-00ADD8.svg)](https://go.dev/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Latest Release](https://img.shields.io/github/v/release/ebalyakin/pgkernel)](https://github.com/ebalyakin/pgkernel/releases)
+[![Latest Release](https://img.shields.io/github/v/release/balyakin/pgkernel)](https://github.com/balyakin/pgkernel/releases)
 
 ## Demo
 
@@ -21,10 +21,10 @@ The demo records `pgkernel check` with colorized output and actionable fixes.
 brew install pgkernel
 
 # Go install
-go install github.com/ebalyakin/pgkernel/cmd/pgkernel@latest
+go install github.com/balyakin/pgkernel/cmd/pgkernel@latest
 
 # Download binary
-curl -sSL https://github.com/ebalyakin/pgkernel/releases/latest/download/pgkernel-linux-amd64 -o pgkernel
+curl -sSL https://github.com/balyakin/pgkernel/releases/latest/download/pgkernel-linux-amd64 -o pgkernel
 chmod +x pgkernel
 ```
 
@@ -103,7 +103,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install pgkernel
-        run: go install github.com/ebalyakin/pgkernel/cmd/pgkernel@latest
+        run: go install github.com/balyakin/pgkernel/cmd/pgkernel@latest
       - name: Run policy gate
         run: pgkernel check --format json --fail-on crit --quiet
 ```
@@ -120,7 +120,7 @@ pgkernel check --format json --baseline .ci/pgkernel-baseline.json --compare-wit
 docker run --rm --privileged \
   -v /proc:/host/proc:ro \
   -v /sys:/host/sys:ro \
-  ghcr.io/ebalyakin/pgkernel:latest \
+  ghcr.io/balyakin/pgkernel:latest \
   pgkernel check
 ```
 

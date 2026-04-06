@@ -3,7 +3,7 @@ package checks
 import (
 	"fmt"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 // FILE:internal/checks/mem_swap.go

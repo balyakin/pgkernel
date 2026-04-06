@@ -3,7 +3,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/ebalyakin/pgkernel/internal/checker"
+	"github.com/balyakin/pgkernel/internal/checker"
 )
 
 type panicCheck struct{}
