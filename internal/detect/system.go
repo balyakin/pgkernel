@@ -12,34 +12,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/detect/system.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Collect system-level performance signals used by memory, IO, and networking checks.
-// SCOPE:RAM/CPU metadata, THP state, hugepages, sysctl values, storage scheduler.
-// INPUT:Linux procfs/sysfs files.
-// OUTPUT:checker.SystemState with best-effort defaults when files are unavailable.
-// KEYWORDS:[DOMAIN(Linux): procfs/sysfs; CONCEPT(Portability): graceful fallback]
-// LINKS:[READS_DATA_FROM(/proc/meminfo): memory; READS_DATA_FROM(/sys/block/*/queue/scheduler): io]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Added system state detection covering MEM/IO/NET dependent inputs.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
-// START_FUNCTION_DetectSystemState
-// START_CONTRACT:
-// PURPOSE:Build baseline SystemState independent from PostgreSQL path resolution.
-// INPUTS:
-// - none
-// OUTPUTS:
-// - checker.SystemState - system snapshot with optional fields when unavailable
-// SIDE_EFFECTS: Reads local procfs/sysfs files.
-// KEYWORDS:[PATTERN(Snapshot): one-pass collection; CONCEPT(FaultTolerance): partial availability]
-// LINKS:[USES_API(os.ReadFile): file reads]
-// COMPLEXITY_SCORE:[6][multi-source extraction]
-// END_CONTRACT
 func DetectSystemState() checker.SystemState {
 	state := checker.SystemState{}
 
@@ -70,19 +42,6 @@ func DetectSystemState() checker.SystemState {
 	return state
 }
 
-// START_FUNCTION_DetectStorage
-// START_CONTRACT:
-// PURPOSE:Resolve PostgreSQL data directory block device and active IO scheduler.
-// INPUTS:
-// - PostgreSQL data directory => dataDir: string
-// OUTPUTS:
-// - blockDevice name => string
-// - scheduler text content => string
-// SIDE_EFFECTS: Reads /proc/self/mountinfo and /sys/block files.
-// KEYWORDS:[PATTERN(PathResolution): mount lookup; CONCEPT(IO): scheduler identification]
-// LINKS:[READS_DATA_FROM(/proc/self/mountinfo): mount map]
-// COMPLEXITY_SCORE:[7][path-to-device mapping plus scheduler lookup]
-// END_CONTRACT
 func DetectStorage(dataDir string) (string, string) {
 	if dataDir == "" {
 		return "", ""

@@ -7,22 +7,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/checks/io_scheduler.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Implement storage scheduler and dirty page write-back checks.
-// SCOPE:IO-001, IO-002.
-// INPUT:System storage and vm dirty ratio state.
-// OUTPUT:IO-focused recommendations for PostgreSQL reliability.
-// KEYWORDS:[DOMAIN(IO): scheduler; DOMAIN(MemoryWriteback): dirty ratios]
-// LINKS:[READS_DATA_FROM(/sys/block/*/queue/scheduler): scheduler]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Implemented IO checks.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
 type io001Scheduler struct{}
 type io002DirtyRatios struct{}
 

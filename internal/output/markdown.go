@@ -7,22 +7,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/output/markdown.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Render markdown report suitable for GitHub issues and Slack docs.
-// SCOPE:Summary header, checks table, optional share block.
-// INPUT:checker.Report and rendering options.
-// OUTPUT:Markdown text.
-// KEYWORDS:[DOMAIN(Collaboration): shareable reports; CONCEPT(Virality): copy-paste snippets]
-// LINKS:[USES_API(strings.Builder): markdown assembly]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Added markdown renderer.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
 func RenderMarkdown(report checker.Report, options RenderOptions) string {
 	checks := filterBySeverity(report.Checks, options.SeverityFilter)
 	b := &strings.Builder{}

@@ -8,22 +8,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/policy/baseline.go
-// VERSION:1.0.1
-// START_MODULE_CONTRACT:
-// PURPOSE:Provide drift-aware regression detection against previous reports.
-// SCOPE:baseline and compare-with JSON handling.
-// INPUT:Current check list and previous report JSON file.
-// OUTPUT:Regression list used by policy exit-code evaluation and reporting.
-// KEYWORDS:[DOMAIN(CI): drift gate; CONCEPT(Regression): severity worsening]
-// LINKS:[READS_DATA_FROM(JSON report): baseline snapshots]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.1 - Prevented false regressions for unknown checks and refined SeverityBump semantics.
-// PREV_CHANGE_SUMMARY:1.0.0 - Added baseline loading and regression diff logic.
-// END_CHANGE_SUMMARY
-
 func LoadReport(path string) (checker.Report, error) {
 	var report checker.Report
 	raw, err := os.ReadFile(path)

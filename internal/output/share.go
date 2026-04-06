@@ -8,22 +8,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/output/share.go
-// VERSION:1.0.1
-// START_MODULE_CONTRACT:
-// PURPOSE:Generate compact social-friendly markdown snippets for top risks and fixes.
-// SCOPE:--share output used in GitHub issues, Slack, and posts.
-// INPUT:Full checker report.
-// OUTPUT:Markdown snippet.
-// KEYWORDS:[DOMAIN(Growth): virality loop; CONCEPT(Actionability): copy-paste fixes]
-// LINKS:[READS_DATA_FROM(checks): critical and warning rows]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.1 - Optimized share block to compact top-3 risk summary for Slack/GitHub snippets.
-// PREV_CHANGE_SUMMARY:1.0.0 - Added share block renderer for top-risk communication.
-// END_CHANGE_SUMMARY
-
 func RenderShareSnippet(report checker.Report) string {
 	b := &strings.Builder{}
 	b.WriteString("## Share: Top Risks + Fixes\n\n")

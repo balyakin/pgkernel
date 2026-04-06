@@ -14,22 +14,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// FILE:cmd/pgkernel/main.go
-// VERSION:1.0.1
-// START_MODULE_CONTRACT:
-// PURPOSE:Provide CLI entrypoint for pgkernel check/version commands.
-// SCOPE:Flag parsing, detection orchestration, policy application, output rendering, process exit.
-// INPUT:CLI flags and runtime host state.
-// OUTPUT:Terminal/JSON/Markdown reports and deterministic exit codes.
-// KEYWORDS:[DOMAIN(CLI): cobra commands; CONCEPT(Policy): CI thresholds; TECH(Go): single binary]
-// LINKS:[USES_API(internal/*): detect/check/policy/output pipeline]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.1 - Added runtime-error aware exit code path and merged baseline/compare regression integration.
-// PREV_CHANGE_SUMMARY:1.0.0 - Implemented full CLI orchestration for pgkernel v0.1.
-// END_CHANGE_SUMMARY
-
 type checkOptions struct {
 	format      string
 	pgConfig    string
@@ -131,7 +115,6 @@ func runCheck(opts checkOptions) int {
 	}
 	report.Regressions = dedupeRegressions(report.Regressions)
 
-	// BUG_FIX_CONTEXT: Runtime checker panics were previously converted into normal check outcomes, which could hide hard failures. The runtimeError signal now propagates into exit code priority logic.
 	exitCode := policy.DetermineExitCode(results, report.Regressions, opts.failOn, runtimeError, regressionsOnly)
 	report.Summary = checker.BuildSummary(results)
 	report.Summary.ExitCode = exitCode

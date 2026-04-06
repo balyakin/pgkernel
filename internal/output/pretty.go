@@ -9,22 +9,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/output/pretty.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Render colorful human-first terminal diagnostics.
-// SCOPE:Grouped check output, remediation snippets, report summary.
-// INPUT:checker.Report and render options.
-// OUTPUT:Formatted plain text for terminal display.
-// KEYWORDS:[DOMAIN(UX): diagnostics readability; CONCEPT(Actionability): visible fix commands]
-// LINKS:[READS_DATA_FROM(checker.Report): report model]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Implemented default pretty renderer.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
 func RenderPretty(report checker.Report, options RenderOptions) string {
 	checks := filterBySeverity(report.Checks, options.SeverityFilter)
 	grouped := groupByCategory(checks)

@@ -6,22 +6,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/checks/mem_swap.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Implement memory pressure and OOM sensitivity checks.
-// SCOPE:MEM-003, MEM-004, MEM-005.
-// INPUT:sysctl values and PostgreSQL process metadata.
-// OUTPUT:Structured memory risk assessment.
-// KEYWORDS:[DOMAIN(Memory): swappiness and overcommit; DOMAIN(Reliability): OOM resilience]
-// LINKS:[READS_DATA_FROM(/proc/sys/vm/*): sysctl]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Added swap and OOM checks.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
 type mem003Swappiness struct{}
 type mem004Overcommit struct{}
 type mem005OOMAdj struct{}

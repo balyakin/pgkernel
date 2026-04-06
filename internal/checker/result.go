@@ -6,28 +6,6 @@ import (
 	"github.com/google/uuid"
 )
 
-// FILE:internal/checker/result.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Define stable report contracts shared across runner, policy, and output layers.
-// SCOPE:Check result schema, report envelope, summary counters, compatibility declarations.
-// INPUT:Check evaluation artifacts from checker modules.
-// OUTPUT:Machine-readable report model for pretty/json/markdown renderers.
-// KEYWORDS:[DOMAIN(Observability): report contract; CONCEPT(Compatibility): schema stability; TECH(Go): typed enums]
-// LINKS:[USES_API(JSON): encoding/json; READS_DATA_FROM(Runtime): checker context]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Introduced canonical result and report models for pgkernel v0.1 implementation.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
-// START_MODULE_MAP:
-// TYPE [Weight 1-10][Entity description in English] =>[entity_name_latin]
-// FUNC [9][Build report envelope with deterministic metadata] => [NewReport]
-// FUNC [8][Initialize summary counters for report checks] => [BuildSummary]
-// END_MODULE_MAP
-
 const (
 	SchemaVersion = "1.0.0"
 	ToolVersion   = "0.1.0"
@@ -149,21 +127,6 @@ type Report struct {
 	Regressions   []Regression   `json:"regressions,omitempty"`
 }
 
-// START_FUNCTION_NewReport
-// START_CONTRACT:
-// PURPOSE:Construct a complete report envelope with deterministic schema metadata.
-// INPUTS:
-// - profile runtime profile string => profile: string
-// - detected system facts => system: SystemInfo
-// - detected postgres facts => pg: PostgreSQLInfo
-// - evaluated check rows => checks: []CheckResult
-// OUTPUTS:
-// - Report - report with generated id and RFC3339 timestamp
-// SIDE_EFFECTS: none
-// KEYWORDS:[PATTERN(Builder): immutable report envelope; CONCEPT(Contract): stable JSON]
-// LINKS:[USES_API(UUID): github.com/google/uuid; USES_API(Time): time.Now]
-// COMPLEXITY_SCORE:[3][Linear model assembly]
-// END_CONTRACT
 func NewReport(profile string, system SystemInfo, pg PostgreSQLInfo, checks []CheckResult) Report {
 	return Report{
 		SchemaVersion: SchemaVersion,
@@ -182,18 +145,6 @@ func NewReport(profile string, system SystemInfo, pg PostgreSQLInfo, checks []Ch
 	}
 }
 
-// START_FUNCTION_BuildSummary
-// START_CONTRACT:
-// PURPOSE:Aggregate summary counters from check statuses.
-// INPUTS:
-// - checks to aggregate => checks: []CheckResult
-// OUTPUTS:
-// - Summary - counts grouped by status classes
-// SIDE_EFFECTS: none
-// KEYWORDS:[PATTERN(Reduce): status aggregation; CONCEPT(Policy): exit-code groundwork]
-// LINKS:[USES_API(None): none]
-// COMPLEXITY_SCORE:[4][Single pass over checks]
-// END_CONTRACT
 func BuildSummary(checks []CheckResult) Summary {
 	s := Summary{Total: len(checks)}
 	for _, check := range checks {

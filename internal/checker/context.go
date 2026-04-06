@@ -1,21 +1,5 @@
 package checker
 
-// FILE:internal/checker/context.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Define normalized runtime state consumed by all check modules.
-// SCOPE:Kernel, system, and PostgreSQL signals collected by detect layer.
-// INPUT:System and configuration probes from detect package.
-// OUTPUT:Stable in-memory state for deterministic check evaluation and tests.
-// KEYWORDS:[DOMAIN(Diagnostics): runtime snapshot; CONCEPT(Testability): dependency isolation]
-// LINKS:[READS_DATA_FROM(detect): detector outputs]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Added strongly typed runtime state model for all checks.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
 type KernelState struct {
 	Version           string
 	Major             int

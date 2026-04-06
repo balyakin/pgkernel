@@ -6,22 +6,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/checks/net_tcp.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Implement networking baseline checks relevant for remote PostgreSQL clients.
-// SCOPE:NET-001.
-// INPUT:TCP keepalive sysctl values.
-// OUTPUT:Informational or pass state with recommended tuning range.
-// KEYWORDS:[DOMAIN(Networking): tcp keepalive; CONCEPT(Resilience): stale connection detection]
-// LINKS:[READS_DATA_FROM(/proc/sys/net/ipv4/*): keepalive knobs]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Added TCP keepalive check.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
 type net001TCPKeepalive struct{}
 
 func NetworkChecks() []checker.Check {

@@ -6,22 +6,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/checks/kern_preemption.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Implement kernel preemption and kernel-version interaction checks.
-// SCOPE:KERN-001, KERN-002, KERN-003.
-// INPUT:checker.RuntimeState kernel attributes.
-// OUTPUT:Structured check results with remediation metadata.
-// KEYWORDS:[DOMAIN(Kernel): preemption model; DOMAIN(PostgreSQL): throughput risk]
-// LINKS:[READS_DATA_FROM(internal/detect/kernel.go): KernelState]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Implemented KERN check family according to specification.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
 type kern001PreemptionModel struct{}
 type kern002KernelVersionRisk struct{}
 type kern003RSEQSupport struct{}

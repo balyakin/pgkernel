@@ -8,22 +8,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/checks/pg_config.go
-// VERSION:1.0.1
-// START_MODULE_CONTRACT:
-// PURPOSE:Implement PostgreSQL configuration sanity checks.
-// SCOPE:PG-001, PG-002, PG-003.
-// INPUT:Parsed postgresql.conf settings and system RAM.
-// OUTPUT:PostgreSQL tuning diagnostics aligned with host resources.
-// KEYWORDS:[DOMAIN(PostgreSQL): memory and WAL tuning; CONCEPT(Capacity): headroom]
-// LINKS:[READS_DATA_FROM(postgresql.conf): shared_buffers/work_mem/wal settings]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.1 - Fixed PostgreSQL memory unit normalization for shared_buffers/work_mem/wal_buffers calculations.
-// PREV_CHANGE_SUMMARY:1.0.0 - Implemented PostgreSQL sanity checks.
-// END_CHANGE_SUMMARY
-
 type pg001SharedBuffers struct{}
 type pg002WorkMem struct{}
 type pg003WAL struct{}

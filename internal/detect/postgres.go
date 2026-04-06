@@ -12,22 +12,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/detect/postgres.go
-// VERSION:1.0.0
-// START_MODULE_CONTRACT:
-// PURPOSE:Discover PostgreSQL configuration and process-level state without DB connectivity.
-// SCOPE:Config path lookup, postgresql.conf parsing, version/data-dir/PID/OOM metadata.
-// INPUT:CLI override, host files, and optional local commands.
-// OUTPUT:checker.PostgresState with parsed settings map for PG checks.
-// KEYWORDS:[DOMAIN(PostgreSQL): configuration; CONCEPT(Discovery): multi-source fallback]
-// LINKS:[READS_DATA_FROM(postgresql.conf): settings; USES_API(pg_lsclusters): discovery fallback]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.0 - Added postgres discovery pipeline with conservative fallbacks.
-// PREV_CHANGE_SUMMARY:none
-// END_CHANGE_SUMMARY
-
 func DetectPostgresState(explicitConfigPath string) checker.PostgresState {
 	state := checker.PostgresState{
 		Settings: make(map[string]string),

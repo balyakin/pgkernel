@@ -8,34 +8,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/detect/kernel.go
-// VERSION:1.0.1
-// START_MODULE_CONTRACT:
-// PURPOSE:Detect kernel version, architecture, preemption model, and rseq capabilities.
-// SCOPE:Linux kernel signals from debugfs, uname output, and boot config fallbacks.
-// INPUT:Runtime host filesystem and uname commands.
-// OUTPUT:checker.KernelState with confidence-oriented detection metadata.
-// KEYWORDS:[DOMAIN(Linux): preemption; CONCEPT(Fallback): layered detection]
-// LINKS:[READS_DATA_FROM(/sys/kernel/debug/sched/preempt): preemption; READS_DATA_FROM(/boot/config-*): kernel config]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.1 - Fixed kernel release fallback and removed duplicate boot-config reads.
-// PREV_CHANGE_SUMMARY:1.0.0 - Implemented layered kernel and preemption detection with rseq signals.
-// END_CHANGE_SUMMARY
-
-// START_FUNCTION_DetectKernelState
-// START_CONTRACT:
-// PURPOSE:Collect kernel state required by KERN checks with progressive fallback logic.
-// INPUTS:
-// - none
-// OUTPUTS:
-// - checker.KernelState - normalized kernel facts
-// SIDE_EFFECTS: Reads host files and invokes uname command.
-// KEYWORDS:[PATTERN(FallbackChain): debugfs->uname->boot-config; CONCEPT(Resilience): partial data handling]
-// LINKS:[USES_API(uname): os/exec; READS_DATA_FROM(debugfs): sched preempt]
-// COMPLEXITY_SCORE:[6][Multi-source inference with fallback]
-// END_CONTRACT
 func DetectKernelState() checker.KernelState {
 	state := checker.KernelState{}
 

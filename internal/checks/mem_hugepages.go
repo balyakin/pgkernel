@@ -8,22 +8,6 @@ import (
 	"github.com/balyakin/pgkernel/internal/checker"
 )
 
-// FILE:internal/checks/mem_hugepages.go
-// VERSION:1.0.1
-// START_MODULE_CONTRACT:
-// PURPOSE:Implement huge pages and THP checks for PostgreSQL workloads.
-// SCOPE:MEM-001, MEM-002.
-// INPUT:System THP/hugepages and PostgreSQL settings.
-// OUTPUT:Actionable results with safety-aware remediation.
-// KEYWORDS:[DOMAIN(Memory): THP and HugePages; CONCEPT(Latency): compaction spikes]
-// LINKS:[READS_DATA_FROM(/sys/kernel/mm/transparent_hugepage/enabled): THP]
-// END_MODULE_CONTRACT
-
-// START_CHANGE_SUMMARY:
-// LAST_CHANGE:1.0.1 - Fixed shared_buffers-to-hugepages estimate to use PostgreSQL unit semantics with dynamic huge page size.
-// PREV_CHANGE_SUMMARY:1.0.0 - Implemented memory hugepage checks.
-// END_CHANGE_SUMMARY
-
 type mem001THP struct{}
 type mem002StaticHugePages struct{}
 
