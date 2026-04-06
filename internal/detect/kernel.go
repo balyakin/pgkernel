@@ -140,9 +140,7 @@ func normalizePreemption(value string) string {
 	s = strings.TrimPrefix(s, "preempt_")
 	s = strings.TrimPrefix(s, "config_preempt_")
 	s = strings.TrimPrefix(s, "preempt")
-	if strings.HasPrefix(s, "_") {
-		s = strings.TrimPrefix(s, "_")
-	}
+	s = strings.TrimPrefix(s, "_")
 	switch s {
 	case "none":
 		return "none"

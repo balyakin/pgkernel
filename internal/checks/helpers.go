@@ -85,10 +85,6 @@ const (
 	pgDefault8KBlocks  int64 = 8 * 1024
 )
 
-func parsePGBytes(raw string) (int64, bool) {
-	return parsePGBytesWithDefault(raw, pgDefaultBytes)
-}
-
 func parsePGBytesWithDefault(raw string, defaultUnitBytes int64) (int64, bool) {
 	value := strings.TrimSpace(strings.ToLower(raw))
 	value = strings.Trim(value, `"'`)

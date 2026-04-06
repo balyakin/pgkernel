@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"unicode"
 
 	"github.com/balyakin/pgkernel/internal/checker"
 )
@@ -116,8 +117,17 @@ func categoryTitle(category string) string {
 	case "postgresql":
 		return "PostgreSQL"
 	default:
-		return strings.Title(category)
+		return upperFirst(category)
 	}
+}
+
+func upperFirst(value string) string {
+	if value == "" {
+		return ""
+	}
+	runes := []rune(value)
+	runes[0] = unicode.ToUpper(runes[0])
+	return string(runes)
 }
 
 func statusIcon(status checker.Status) string {
